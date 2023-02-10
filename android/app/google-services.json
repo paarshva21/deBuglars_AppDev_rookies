@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1047434540188",
+    "project_id": "unscriptrookiesapp",
+    "storage_bucket": "unscriptrookiesapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047434540188:android:22d54581011fe06e0a2959",
+        "android_client_info": {
+          "package_name": "com.example.unscript_rookies_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047434540188-a6n0sn7h35c8mu1q6tabjom9e7oaoet1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCstUE4xogzmqviO0sI5cB8WxrOAbqzwbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047434540188-a6n0sn7h35c8mu1q6tabjom9e7oaoet1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
