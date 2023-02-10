@@ -253,8 +253,8 @@ class _SignUpState extends State<SignUp> {
           .set({
         "Email": email1,
         "Password": password1,
-        "Verified": null,
-        "PhoneNo": null
+        "Verified": false,
+        "PhoneNo": "0"
       });
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => Login()));

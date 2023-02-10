@@ -79,7 +79,7 @@ class _UserPageState extends State<UserPage> {
                     child: Text("Error occured!"),
                   );
                 } else if (snapshot.hasData) {
-                  if (snapshot.data?.Verified == null) {
+                  if (snapshot.data?.PhoneNo == "0") {
                     return Text("Customer");
                   } else
                     return Text("Provider");
@@ -114,7 +114,7 @@ class _UserPageState extends State<UserPage> {
 class AppUser {
   final String Email;
   final String Password;
-  final String Verified;
+  final bool Verified;
   final String PhoneNo;
 
   AppUser(
