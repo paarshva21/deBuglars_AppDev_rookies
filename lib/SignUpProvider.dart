@@ -279,7 +279,7 @@ class _SignUpProviderState extends State<SignUpProvider> {
       await FirebaseFirestore.instance
           .collection('Customers')
           .doc(user?.uid)
-          .set({"Email": email1, "Password": password1});
+          .set({"Email": email1, "Password": password1, "Phone Number": n1});
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => Login()));
     } on FirebaseAuthException catch (e) {
