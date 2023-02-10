@@ -21,6 +21,7 @@ class _SignUpProviderState extends State<SignUpProvider> {
 
   String email1 = "", password1 = "", password2 = "";
   Long n1 = 0 as Long;
+  bool b1 = false;
 
   bool hidden1 = true;
   bool hidden2 = true;
@@ -279,7 +280,7 @@ class _SignUpProviderState extends State<SignUpProvider> {
       await FirebaseFirestore.instance
           .collection('Providers')
           .doc(user?.uid)
-          .set({"Email": email1, "Password": password1, "Phone Number": n1});
+          .set({"Email": email1, "Password": password1, "Phone Number": n1, "Verified":b1});
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => Login()));
     } on FirebaseAuthException catch (e) {
