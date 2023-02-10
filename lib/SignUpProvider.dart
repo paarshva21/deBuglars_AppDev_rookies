@@ -277,7 +277,7 @@ class _SignUpProviderState extends State<SignUpProvider> {
           email: emailController.text.trim(),
           password: passwordController.text.trim());
       await FirebaseFirestore.instance
-          .collection('Customers')
+          .collection('Providers')
           .doc(user?.uid)
           .set({"Email": email1, "Password": password1, "Phone Number": n1});
       Navigator.of(context)
