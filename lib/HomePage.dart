@@ -1,9 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:unscript_rookies_app/HomePage.dart';
 import 'Login.dart';
 import 'UserPage.dart';
 
 class HomePage extends StatelessWidget {
+
+  var user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
@@ -25,4 +30,5 @@ class HomePage extends StatelessWidget {
         });
   }
 }
+
 

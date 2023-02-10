@@ -275,16 +275,16 @@ class _SignUpProviderState extends State<SignUpProvider> {
 
   Future EmailSignUp() async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      var user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text.trim(),
-          password: passwordController.text.trim());
+          password: passwordController.text.trim())).user;
       await FirebaseFirestore.instance
-          .collection('Providers')
+          .collection('App Users')
           .doc(user?.uid)
           .set({
         "Email": email1,
         "Password": password1,
-        "Phone Number": n1,
+        "PhoneNo": n1,
         "Verified": b1
       });
       Navigator.of(context)

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -23,50 +24,117 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.green,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        selectedFontSize: 18,
-        unselectedFontSize: 14,
-        iconSize: 27,
-        showUnselectedLabels: false,
-        currentIndex: currentIndex,
-        onTap: (index) => setState(() {
-          currentIndex = index;
-        }),
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.fastfood,
-              color: Colors.white,
+      child: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.green,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
+          selectedFontSize: 18,
+          unselectedFontSize: 14,
+          iconSize: 27,
+          showUnselectedLabels: false,
+          currentIndex: currentIndex,
+          onTap: (index) => setState(() {
+            currentIndex = index;
+          }),
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.fastfood,
+                color: Colors.white,
+              ),
+              label: "Recipes",
             ),
-            label: "Recipes",
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
-              Icons.icecream,
-              color: Colors.white,
+            BottomNavigationBarItem(
+              icon: FaIcon(
+                Icons.icecream,
+                color: Colors.white,
+              ),
+              label: "Desserts",
             ),
-            label: "Desserts",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite,
-              color: Colors.white,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.favorite,
+                color: Colors.white,
+              ),
+              label: "Favourites",
             ),
-            label: "Favourites",
-          ),
-        ],
+          ],
+        ),
+        drawer: NavigationDrawer(),
+        appBar: AppBar(
+          title: Text("Boilerplate"),
+          backgroundColor: Colors.green,
+        ),
+        body: FutureBuilder<AppUser?>(
+            future: readUser(),
+            builder: (context, snapshot) {
+              try {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text("Error occured!"),
+                  );
+                } else if (snapshot.hasData) {
+                  if (snapshot.data?.Verified == null) {
+                    return Text("Customer");
+                  } else
+                    return Text("Provider");
+                } else {
+                  return Center(
+                    child: Text("Error occured!"),
+                  );
+                }
+              } catch (e) {
+                print(e.toString());
+                return Center(
+                  child: Text("Error occured!"),
+                );
+              }
+            }),
       ),
-      drawer: NavigationDrawer(),
-          appBar: AppBar(
-            title: Text("Boilerplate"),
-            backgroundColor: Colors.green,
-          ),
-    ));
+    );
   }
+
+  Future<AppUser?> readUser() async {
+    var doc = await FirebaseFirestore.instance
+        .collection("App Users")
+        .doc(user.uid)
+        .get();
+    if (doc.exists) {
+      print(doc);
+      return AppUser.fromJson(doc.data()!);
+    }
+  }
+}
+
+class AppUser {
+  final String Email;
+  final String Password;
+  final String Verified;
+  final String PhoneNo;
+
+  AppUser(
+      {required this.Email,
+      required this.Password,
+      required this.Verified,
+      required this.PhoneNo});
+
+  Map<String, dynamic> toJson() => {
+        'Email': Email,
+        'Verified': Verified,
+        'Password': Password,
+        'PhoneNo': PhoneNo
+      };
+
+  static AppUser fromJson(Map<String, dynamic> json) => AppUser(
+      Email: json["Email"],
+      Verified: json["Verified"],
+      PhoneNo: json["PhoneNo"],
+      Password: json["Password"]);
 }
 
 class NavigationDrawer extends StatelessWidget {
@@ -151,7 +219,6 @@ class NavigationDrawer extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     fontSize: 20)),
             onTap: () {
-              final user = FirebaseAuth.instance.currentUser;
               try {
                 FirebaseAuth.instance.signOut();
                 Navigator.pushAndRemoveUntil(
