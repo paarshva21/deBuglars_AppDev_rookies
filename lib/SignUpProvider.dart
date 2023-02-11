@@ -285,7 +285,8 @@ class _SignUpProviderState extends State<SignUpProvider> {
         "Email": email1,
         "Password": password1,
         "PhoneNo": n1,
-        "Verified": b1
+        "Verified": b1,
+        "uid":user?.uid
       });
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => Login()));
