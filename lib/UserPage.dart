@@ -1,13 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:unscript_rookies_app/HomePage.dart';
-import 'package:unscript_rookies_app/Screen1.dart';
-import 'package:unscript_rookies_app/Screen2.dart';
-import 'package:unscript_rookies_app/Screen3.dart';
 import 'package:unscript_rookies_app/Setting.dart';
 import 'package:unscript_rookies_app/Utils.dart';
+import 'package:unscript_rookies_app/ProviderDisplay.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -17,55 +14,17 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  int currentIndex = 0;
   final user = FirebaseAuth.instance.currentUser!;
-  final screens = [Screen1(), Screen2(), Screen3()];
+  String? Email;
+  String? PhoneNo;
+  String? Password;
+  bool? Verified;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.green,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white,
-          selectedFontSize: 18,
-          unselectedFontSize: 14,
-          iconSize: 27,
-          showUnselectedLabels: false,
-          currentIndex: currentIndex,
-          onTap: (index) => setState(() {
-            currentIndex = index;
-          }),
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.fastfood,
-                color: Colors.white,
-              ),
-              label: "Recipes",
-            ),
-            BottomNavigationBarItem(
-              icon: FaIcon(
-                Icons.icecream,
-                color: Colors.white,
-              ),
-              label: "Desserts",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.favorite,
-                color: Colors.white,
-              ),
-              label: "Favourites",
-            ),
-          ],
-        ),
         drawer: NavigationDrawer(),
-        appBar: AppBar(
-          title: Text("Boilerplate"),
-          backgroundColor: Colors.green,
-        ),
         body: FutureBuilder<AppUser?>(
             future: readUser(),
             builder: (context, snapshot) {
@@ -79,10 +38,19 @@ class _UserPageState extends State<UserPage> {
                     child: Text("Error occured!"),
                   );
                 } else if (snapshot.hasData) {
-                  if (snapshot.data?.PhoneNo == "0") {
+                  if (snapshot.data?.Password == "adminpass" &&
+                      snapshot.data?.Email == "aryatel26@gmail.com") {
+                    return Text("Admin");
+                  }
+                  else if (snapshot.data?.PhoneNo == "0") {
                     return Text("Customer");
                   } else
-                    return Text("Provider");
+                    return ProviderDisplay(
+                      Email: snapshot.data?.Email,
+                      PhoneNo: snapshot.data?.PhoneNo,
+                      Password: snapshot.data?.Password,
+                      Verified: true,
+                    );
                 } else {
                   return Center(
                     child: Text("Error occured!"),
