@@ -62,20 +62,11 @@ class Food {
 
   Food(
       {required this.id,
-        required this.name,
-        required this.date,
-        required this.price,
-        required this.quantity,
-        required this.provider});
-
-  Food.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    date = json['date'];
-    price = json['price'];
-    quantity = json['quantity'];
-    provider = json['provider'];
-  }
+      required this.name,
+      required this.date,
+      required this.price,
+      required this.quantity,
+      required this.provider});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -89,7 +80,6 @@ class Food {
   }
 }
 
-
 Future<List<Food>> getData(String? email) async {
   String url = "http://192.168.29.59:8000/view_food/$email";
   http.Response response = await http.get(Uri.parse(url));
@@ -102,3 +92,4 @@ Future<List<Food>> getData(String? email) async {
   });
   return data;
 }
+

@@ -50,6 +50,7 @@ class _UserPageState extends State<UserPage> {
                       PhoneNo: snapshot.data?.PhoneNo,
                       Password: snapshot.data?.Password,
                       Verified: true,
+                      uid:snapshot.data?.uid
                     );
                 } else {
                   return Center(
@@ -84,25 +85,29 @@ class AppUser {
   final String Password;
   final bool Verified;
   final String PhoneNo;
+  final String uid;
 
   AppUser(
       {required this.Email,
       required this.Password,
       required this.Verified,
-      required this.PhoneNo});
+      required this.PhoneNo,
+        required this.uid});
 
   Map<String, dynamic> toJson() => {
         'Email': Email,
         'Verified': Verified,
         'Password': Password,
-        'PhoneNo': PhoneNo
+        'PhoneNo': PhoneNo,
+         'uid': uid
       };
 
   static AppUser fromJson(Map<String, dynamic> json) => AppUser(
       Email: json["Email"],
       Verified: json["Verified"],
       PhoneNo: json["PhoneNo"],
-      Password: json["Password"]);
+      Password: json["Password"],
+      uid: json["uid"]);
 }
 
 class NavigationDrawer extends StatelessWidget {

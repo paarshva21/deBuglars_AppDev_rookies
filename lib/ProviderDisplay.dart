@@ -11,12 +11,14 @@ class ProviderDisplay extends StatefulWidget {
   String? PhoneNo;
   String? Password;
   bool? Verified;
+  String? uid;
   ProviderDisplay(
       {Key? key,
       required this.Email,
       required this.PhoneNo,
       required this.Password,
-      required this.Verified})
+      required this.Verified,
+      required this.uid})
       : super(key: key);
 
   @override
@@ -24,7 +26,6 @@ class ProviderDisplay extends StatefulWidget {
 }
 
 class _ProviderDisplayState extends State<ProviderDisplay> {
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,7 +42,7 @@ class _ProviderDisplayState extends State<ProviderDisplay> {
                 padding: EdgeInsets.all(30),
                 child: Text(
                     "Your request for being approved as Provider is currently being reviewed by the Admin. "
-                        "Thank you for your patience!"),
+                    "Thank you for your patience!"),
               ),
             ),
     ));
@@ -56,18 +57,14 @@ class VerifiedProvider extends StatefulWidget {
 }
 
 class _VerifiedProviderState extends State<VerifiedProvider> {
-
-  List<Widget> screens= [
-    Finances(),
-    Inventory(),
-    Display()
-  ];
+  List<Widget> screens = [Finances(), Inventory(), Display()];
   int currentIndex = 0;
   final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(
+    return SafeArea(
+        child: Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.green,
         selectedItemColor: Colors.white,
@@ -108,4 +105,3 @@ class _VerifiedProviderState extends State<VerifiedProvider> {
     ));
   }
 }
-
