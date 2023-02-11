@@ -52,7 +52,7 @@ class _UserPageState extends State<UserPage> {
                       Email: snapshot.data?.Email,
                       PhoneNo: snapshot.data?.PhoneNo,
                       Password: snapshot.data?.Password,
-                      Verified: true,
+                      Verified: snapshot.data?.Verified,
                       uid:snapshot.data?.uid
                     );
                 } else {

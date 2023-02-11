@@ -79,6 +79,7 @@ class _ProvidersPageState extends State<ProvidersPage> {
               ),
             ]);
           } else if (snapshot.hasError) {
+            print(snapshot.error);
             return const Text('Something went wrong');
           } else {
             return const Center(
