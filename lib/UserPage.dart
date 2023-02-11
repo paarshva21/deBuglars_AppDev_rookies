@@ -133,19 +133,21 @@ class NavigationDrawer extends StatelessWidget {
       );
 
   Widget buildMenuItems(BuildContext context) => Container(
+
       padding: EdgeInsets.all(24.0),
       child: Wrap(runSpacing: 16, children: [
         Column(children: <Widget>[
           ListTile(
+            
               leading: Icon(
                 Icons.person,
-                color: Colors.green,
+                color: Colors.black,
                 size: 30,
               ),
               title: Text(
                 "Profile",
                 style: TextStyle(
-                    color: Colors.green,
+                    color: Colors.redAccent,
                     fontWeight: FontWeight.w700,
                     fontSize: 20),
               ),
@@ -153,12 +155,12 @@ class NavigationDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.info,
-              color: Colors.green,
+              color: Colors.black,
               size: 30,
             ),
             title: Text("About Us",
                 style: TextStyle(
-                    color: Colors.green,
+                    color: Colors.redAccent,
                     fontWeight: FontWeight.w700,
                     fontSize: 20)),
             onTap: () {},
@@ -166,12 +168,12 @@ class NavigationDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.settings,
-              color: Colors.green,
+              color: Colors.black,
               size: 30,
             ),
             title: Text("Settings",
                 style: TextStyle(
-                    color: Colors.green,
+                    color: Colors.redAccent,
                     fontWeight: FontWeight.w700,
                     fontSize: 20)),
             onTap: () {
@@ -180,18 +182,18 @@ class NavigationDrawer extends StatelessWidget {
             },
           ),
           Divider(
-            color: Colors.green,
+            color: Colors.redAccent,
             thickness: 1,
           ),
           ListTile(
             leading: Icon(
               Icons.logout,
-              color: Colors.green,
+              color: Colors.black,
               size: 30,
             ),
             title: Text("Logout",
                 style: TextStyle(
-                    color: Colors.green,
+                    color: Colors.redAccent,
                     fontWeight: FontWeight.w700,
                     fontSize: 20)),
             onTap: () {

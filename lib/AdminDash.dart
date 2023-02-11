@@ -20,9 +20,11 @@ class _AdminDashState extends State<AdminDash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      backgroundColor: Color(0xFFEDE5D8),
       appBar: AppBar(
         title: Text("Admin Dashboard"),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.redAccent,
       ),
       body: screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -32,8 +34,8 @@ class _AdminDashState extends State<AdminDash> {
             _currentIndex = index;
           });
         },
-        backgroundColor: Colors.green,
-        selectedItemColor: Colors.white,
+        backgroundColor: Colors.redAccent,
+        selectedItemColor: Colors.black,
         unselectedItemColor: Colors.white,
         selectedFontSize: 18,
         unselectedFontSize: 14,
@@ -43,6 +45,7 @@ class _AdminDashState extends State<AdminDash> {
           BottomNavigationBarItem(
             icon: Icon(Icons.access_time),
             label: 'Providers',
+            backgroundColor: Colors.redAccent,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

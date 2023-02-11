@@ -14,17 +14,21 @@ class _UserHomeState extends State<UserHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      backgroundColor: Color(0xFFEDE5D8),
       appBar: AppBar(
-        title: Text("Home"),
-        backgroundColor: Colors.green,
+        title: Text("Home",style: TextStyle(color: Colors.black87),),
+        backgroundColor: Colors.redAccent,
       ),
       drawer: NavigationDrawer(),
       body: FutureBuilder<List<dynamic>>(
+
           future: getData(),
           builder: (context, snapshot) {
             try {
               if (snapshot.hasData) {
                 return ListView.builder(
+
                     itemCount: snapshot.data?.length,
                     itemBuilder: (context, index) {
                       return buildFood(snapshot.data![index]);
@@ -48,11 +52,23 @@ class _UserHomeState extends State<UserHome> {
   }
 
   Widget buildFood(Food food) {
-    return ListTile(
-      title: Text(food.name!),
-      trailing: Text(food.price!),
-      subtitle: Text(food.quantity!),
-    );
+    return
+      ListTile(
+        leading: const CircleAvatar(
+          backgroundColor: Colors.white,
+          child: Icon(Icons.fastfood, color: Colors.black),
+        ),
+        subtitle: Text(food.quantity!),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Text(food.name!,style: TextStyle(fontWeight: FontWeight.w700),),
+          ],
+
+        ),
+        trailing: Text('Rs. '+ food.price!),
+      );
+
+
   }
 }
 

@@ -45,10 +45,20 @@ class _DisplayState extends State<Display> {
 
   Widget buildFood(Food food) {
     return ListTile(
-      title: Text(food.name!),
-      trailing: Text(food.price!),
+      leading: const CircleAvatar(
+        backgroundColor: Colors.white,
+        child: Icon(Icons.fastfood, color: Colors.black),
+      ),
       subtitle: Text(food.quantity!),
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [Text(food.name!,style: TextStyle(fontWeight: FontWeight.w700),),
+        ],
+
+      ),
+      trailing: Text('Rs. '+ food.price!),
     );
+
   }
 }
 
@@ -62,11 +72,11 @@ class Food {
 
   Food(
       {this.id,
-        this.name,
-        this.date,
-        this.price,
-        this.quantity,
-        this.provider});
+      this.name,
+      this.date,
+      this.price,
+      this.quantity,
+      this.provider});
 
   Food.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -88,7 +98,6 @@ class Food {
     return data;
   }
 }
-
 
 Future<List<Food>> getData(String? email) async {
   List<Food> list = [];

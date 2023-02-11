@@ -11,7 +11,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -45,7 +44,7 @@ class _SignUpState extends State<SignUp> {
             child: SafeArea(
               child: Center(
                 child: Scaffold(
-                    backgroundColor: Colors.transparent,
+                    backgroundColor: Color(0xFFEDE5D8),
                     body: GestureDetector(
                         onTap: () {
                           FocusScopeNode currentFocus = FocusScope.of(context);
@@ -76,17 +75,20 @@ class _SignUpState extends State<SignUp> {
                             ),
                             Padding(padding: EdgeInsets.all(50.0)),
                             Container(
-                              padding: EdgeInsets.only(top: 15),
-                              child: Text(
-                                "Sign Up",
-                                style: TextStyle(
-                                  color: Colors.green,
-                                  fontSize: 50.0,
-                                  fontWeight: FontWeight.w700,
+                              padding: EdgeInsets.only(top: 15, left: 45),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Sign Up",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 60.0,
+                                    fontWeight: FontWeight.w900,
+                                  ),
                                 ),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.all(20.0)),
+                            Padding(padding: EdgeInsets.all(10.0)),
                             Container(
                                 padding:
                                     EdgeInsets.only(left: 35.0, right: 35.0),
@@ -211,11 +213,10 @@ class _SignUpState extends State<SignUp> {
                                     width: 20.0,
                                     height: 50.0,
                                   ),
-                                  Container(
-                                      width: 135.0,
-                                      height: 40.0,
-                                      color: Colors.green,
-                                      child: TextButton(
+                                  SizedBox(
+                                      height: 40,
+                                      width: 140,
+                                      child: ElevatedButton(
                                         onPressed: () {
                                           _formKey.currentState!.save();
                                           if (_formKey.currentState!
@@ -225,14 +226,11 @@ class _SignUpState extends State<SignUp> {
                                             }
                                           }
                                         },
-                                        child: Text(
-                                          "Sign Up",
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.white,
-                                          ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: Color(0xFFEC4C47),
+                                          foregroundColor: Colors.black,
                                         ),
+                                        child: const Text("Sign Up"),
                                       )),
                                 ]))
                           ]),

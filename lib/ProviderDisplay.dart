@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lottie/lottie.dart';
 import 'package:unscript_rookies_app/Display.dart';
 import 'package:unscript_rookies_app/Finances.dart';
 import 'package:unscript_rookies_app/Inventory.dart';
@@ -31,20 +32,30 @@ class _ProviderDisplayState extends State<ProviderDisplay> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text("Provider Dashboard"),
-        backgroundColor: Colors.green,
+        title: Text("Provider Dashboard",style: TextStyle(color: Colors.black87),),
+        backgroundColor: Colors.redAccent,
       ),
       drawer: NavigationDrawer(),
       body: widget.Verified!
           ? VerifiedProvider()
-          : Center(
-              child: Container(
-                padding: EdgeInsets.all(30),
+          : Column(
+            children: [
+              SizedBox(height: 50,),
+              Align(
+                  alignment: Alignment.center,
+                  child: Lottie.network('https://assets2.lottiefiles.com/private_files/lf30_t6juv2mp.json',height: 200
+                  )),
+
+              SizedBox(height: 180,),
+              Align(
+                alignment: Alignment.bottomCenter,
+
                 child: Text(
                     "Your request for being approved as Provider is currently being reviewed by the Admin. "
-                    "Thank you for your patience!"),
+                    "Thank you for your patience!",style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold,fontSize: 20),),
               ),
-            ),
+            ],
+          ),
     ));
   }
 }
@@ -66,8 +77,8 @@ class _VerifiedProviderState extends State<VerifiedProvider> {
     return SafeArea(
         child: Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.green,
-        selectedItemColor: Colors.white,
+        backgroundColor: Colors.redAccent,
+        selectedItemColor: Colors.black,
         unselectedItemColor: Colors.white,
         selectedFontSize: 18,
         unselectedFontSize: 14,
@@ -81,21 +92,18 @@ class _VerifiedProviderState extends State<VerifiedProvider> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.attach_money,
-              color: Colors.white,
             ),
             label: "Finances",
           ),
           BottomNavigationBarItem(
             icon: FaIcon(
               Icons.inventory,
-              color: Colors.white,
             ),
             label: "Inventory",
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.display_settings,
-              color: Colors.white,
             ),
             label: "Display",
           ),

@@ -32,7 +32,7 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
               width: MediaQuery.of(context).size.width,
               child: Center(
                 child: Scaffold(
-                    backgroundColor: Colors.transparent,
+                    backgroundColor: Color(0xFFEDE5D8),
                     body: GestureDetector(
                         onTap: () {
                           FocusScopeNode currentFocus = FocusScope.of(context);
@@ -63,11 +63,12 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                                 ),
                                 Container(
                                   padding: EdgeInsets.only(top: 230),
-                                  child: Text(
-                                    "Reset password via email.",
+
+                                  child:Text(
+                                    "Reset password via email",
                                     style: TextStyle(
-                                      color: Colors.green,
-                                      fontSize: 25.0,
+                                      color: Colors.black,
+                                      fontSize: 30.0,
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
@@ -104,25 +105,24 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                                   ),
                                 ),
                                 Padding(padding: EdgeInsets.all(20.0)),
-                                Container(
-                                    width: 135.0,
-                                    height: 40.0,
-                                    color: Colors.green,
-                                    child: TextButton(
+
+
+                                SizedBox(
+                                    height: 40,
+                                    width: 140,
+                                    child: ElevatedButton(
                                       onPressed: () {
                                         if (formKey.currentState!.validate()) {
                                           resetPassword();
                                         }
                                       },
-                                      child: Text(
-                                        "Send email",
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w700,
-                                          color: Colors.white,
-                                        ),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Color(0xFFEC4C47),
+                                        foregroundColor: Colors.black,
                                       ),
+                                      child: const Text("Send email"),
                                     )),
+
                               ]),
                             )))),
               )),

@@ -10,6 +10,10 @@ class Finances extends StatefulWidget {
 class _FinancesState extends State<Finances> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      decoration: BoxDecoration(
+        color: Color(0xFFEDE5D8),
+      ),
+    );
   }
 }

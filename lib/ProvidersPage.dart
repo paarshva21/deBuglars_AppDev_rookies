@@ -45,7 +45,7 @@ class _ProvidersPageState extends State<ProvidersPage> {
               Text(
                 "Verified Users",
                 style: TextStyle(
-                    color: Colors.green,
+                    color: Colors.black,
                     fontSize: 24.0,
                     fontWeight: FontWeight.w700),
               ),
@@ -63,7 +63,7 @@ class _ProvidersPageState extends State<ProvidersPage> {
               Text(
                 "Unverified Users",
                 style: TextStyle(
-                    color: Colors.green,
+                    color: Colors.black,
                     fontSize: 24.0,
                     fontWeight: FontWeight.w700),
               ),
@@ -105,46 +105,48 @@ class _ProvidersPageState extends State<ProvidersPage> {
 
   Widget buildUser(AppUser? user, bool Verified) => ListTile(
         leading: const CircleAvatar(
-          backgroundColor: Colors.yellow,
-          child: Icon(Icons.account_circle, color: Colors.black),
+          backgroundColor: Colors.black,
+          child: Icon(Icons.account_circle, color: Colors.grey),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('${user?.Email}'),
-            Text('${user?.PhoneNo}'),
-            (user?.Verified == true) ? Text("Verified") : Text("Not Verified")
           ],
         ),
         subtitle: Text('${user?.PhoneNo}'),
-        trailing: Container(
-          color: Colors.green,
-          child: TextButton(
-            onPressed: () => {
-              setState(() {
-                update(user?.uid);
-                updateData(user?.Email);
-              })
-            },
-            child: Text(
-              "Verify",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ),
+        trailing:SizedBox(
+            height: 40,
+            width: 70,
+            child: ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  update(user?.uid);
+                  updateData(user?.Email);
+                });
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFEC4C47),
+                foregroundColor: Colors.black,
+              ),
+              child: const Text("Verify"),
+            )),
+
+
+
+
+
       );
 
   Widget buildUser1(AppUser? user, bool Verified) => ListTile(
         leading: const CircleAvatar(
-          backgroundColor: Colors.yellow,
-          child: Icon(Icons.account_circle, color: Colors.black),
+          backgroundColor: Colors.lightBlueAccent,
+                    child: Icon(Icons.account_circle, color: Colors.black),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('${user?.Email}'),
-            Text('${user?.PhoneNo}'),
-            (user?.Verified == true) ? Text("Verified") : Text("Not Verified")
           ],
         ),
         subtitle: Text('${user?.PhoneNo}'),

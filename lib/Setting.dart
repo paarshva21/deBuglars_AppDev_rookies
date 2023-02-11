@@ -16,19 +16,22 @@ class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+
       child: Scaffold(
+          backgroundColor: Color(0xFFEDE5D8),
           appBar: AppBar(
-            title: Text("Settings"),
-            backgroundColor: Colors.green,
+            title: Text("Settings",style: TextStyle(color: Colors.black87),),
+            backgroundColor: Colors.redAccent,
           ),
           body: SettingsList(sections: [
+
             SettingsSection(
                 title: Text(
                   "Appearance",
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
-                      color: Colors.green),
+                      color: Colors.redAccent),
                 ),
                 tiles: <SettingsTile>[
                   SettingsTile.switchTile(
@@ -52,7 +55,7 @@ class _SettingState extends State<Setting> {
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
-                      color: Colors.green),
+                      color: Colors.redAccent),
                 ),
                 tiles: <SettingsTile>[
                   SettingsTile(
@@ -70,7 +73,7 @@ class _SettingState extends State<Setting> {
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
-                      color: Colors.green),
+                      color: Colors.redAccent),
                 ),
                 tiles: <SettingsTile>[
                   SettingsTile(

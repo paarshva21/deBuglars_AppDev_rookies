@@ -12,9 +12,11 @@ class _UserLocState extends State<UserLoc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      backgroundColor: Color(0xFFEDE5D8),
       appBar: AppBar(
-        title: Text("Location"),
-        backgroundColor: Colors.green,
+        title: Text("Location",style: TextStyle(color: Colors.black87),),
+        backgroundColor: Colors.redAccent,
       ),
       drawer: NavigationDrawer(),
     );

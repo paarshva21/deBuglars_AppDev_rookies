@@ -32,8 +32,8 @@ class _CustomerState extends State<Customer> {
             _currentIndex = index;
           });
         },
-        backgroundColor: Colors.green,
-        selectedItemColor: Colors.white,
+        backgroundColor: Colors.redAccent,
+        selectedItemColor: Colors.black,
         unselectedItemColor: Colors.white,
         selectedFontSize: 18,
         unselectedFontSize: 14,
@@ -43,6 +43,7 @@ class _CustomerState extends State<Customer> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.location_on),

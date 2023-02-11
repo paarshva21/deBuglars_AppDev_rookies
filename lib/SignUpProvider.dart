@@ -48,7 +48,7 @@ class _SignUpProviderState extends State<SignUpProvider> {
             child: SafeArea(
               child: Center(
                 child: Scaffold(
-                    backgroundColor: Colors.transparent,
+                    backgroundColor: Color(0xFFEDE5D8),
                     body: GestureDetector(
                         onTap: () {
                           FocusScopeNode currentFocus = FocusScope.of(context);
@@ -79,13 +79,16 @@ class _SignUpProviderState extends State<SignUpProvider> {
                             ),
                             Padding(padding: EdgeInsets.all(50.0)),
                             Container(
-                              padding: EdgeInsets.only(top: 15),
-                              child: Text(
-                                "Sign Up",
-                                style: TextStyle(
-                                  color: Colors.green,
-                                  fontSize: 50.0,
-                                  fontWeight: FontWeight.w700,
+                              padding: EdgeInsets.only(top: 15, left: 45),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Sign Up",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 50.0,
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
                               ),
                             ),
@@ -243,11 +246,10 @@ class _SignUpProviderState extends State<SignUpProvider> {
                                     width: 20.0,
                                     height: 50.0,
                                   ),
-                                  Container(
-                                      width: 135.0,
-                                      height: 40.0,
-                                      color: Colors.green,
-                                      child: TextButton(
+                                  SizedBox(
+                                      height: 40,
+                                      width: 140,
+                                      child: ElevatedButton(
                                         onPressed: () {
                                           _formKey.currentState!.save();
                                           if (_formKey.currentState!
@@ -257,14 +259,11 @@ class _SignUpProviderState extends State<SignUpProvider> {
                                             }
                                           }
                                         },
-                                        child: Text(
-                                          "Sign Up",
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.white,
-                                          ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: Color(0xFFEC4C47),
+                                          foregroundColor: Colors.black,
                                         ),
+                                        child: const Text("Sign Up"),
                                       )),
                                 ]))
                           ]),
@@ -276,8 +275,9 @@ class _SignUpProviderState extends State<SignUpProvider> {
   Future EmailSignUp() async {
     try {
       var user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: passwordController.text.trim())).user;
+              email: emailController.text.trim(),
+              password: passwordController.text.trim()))
+          .user;
       await FirebaseFirestore.instance
           .collection('App Users')
           .doc(user?.uid)
@@ -286,7 +286,7 @@ class _SignUpProviderState extends State<SignUpProvider> {
         "Password": password1,
         "PhoneNo": n1,
         "Verified": b1,
-        "uid":user?.uid
+        "uid": user?.uid
       });
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => Login()));
