@@ -19,6 +19,7 @@ class _UserPageState extends State<UserPage> {
   String? PhoneNo;
   String? Password;
   bool? Verified;
+  String? uid;
 
   @override
   Widget build(BuildContext context) {
