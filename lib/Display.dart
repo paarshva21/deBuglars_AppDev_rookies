@@ -13,7 +13,6 @@ class Display extends StatefulWidget {
 
 class _DisplayState extends State<Display> {
   var user = FirebaseAuth.instance.currentUser!;
-  List<Food>? _Food;
 
   @override
   Widget build(BuildContext context) {

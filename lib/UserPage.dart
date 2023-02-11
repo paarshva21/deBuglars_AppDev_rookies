@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:unscript_rookies_app/AdminDash.dart';
+import 'package:unscript_rookies_app/Customer.dart';
 import 'package:unscript_rookies_app/HomePage.dart';
 import 'package:unscript_rookies_app/Setting.dart';
 import 'package:unscript_rookies_app/Utils.dart';
@@ -41,10 +43,10 @@ class _UserPageState extends State<UserPage> {
                 } else if (snapshot.hasData) {
                   if (snapshot.data?.Password == "adminpass" &&
                       snapshot.data?.Email == "aryatel26@gmail.com") {
-                    return Text("Admin");
+                    return AdminDash();
                   }
                   else if (snapshot.data?.PhoneNo == "0") {
-                    return Text("Customer");
+                    return Customer();
                   } else
                     return ProviderDisplay(
                       Email: snapshot.data?.Email,
