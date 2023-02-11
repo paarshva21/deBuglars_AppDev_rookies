@@ -13,6 +13,7 @@ class Display extends StatefulWidget {
 
 class _DisplayState extends State<Display> {
   var user = FirebaseAuth.instance.currentUser!;
+  List<Food>? _Food;
 
   @override
   Widget build(BuildContext context) {
@@ -53,20 +54,29 @@ class _DisplayState extends State<Display> {
 }
 
 class Food {
-  late final int id;
-  late final String name;
-  late final String date;
-  late final String price;
-  late final String quantity;
-  late final int provider;
+  int? id;
+  String? name;
+  String? date;
+  String? price;
+  String? quantity;
+  int? provider;
 
   Food(
-      {required this.id,
-      required this.name,
-      required this.date,
-      required this.price,
-      required this.quantity,
-      required this.provider});
+      {this.id,
+        this.name,
+        this.date,
+        this.price,
+        this.quantity,
+        this.provider});
+
+  Food.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    date = json['date'];
+    price = json['price'];
+    quantity = json['quantity'];
+    provider = json['provider'];
+  }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -80,16 +90,27 @@ class Food {
   }
 }
 
+
 Future<List<Food>> getData(String? email) async {
+  List<Food> list = [];
   String url = "http://192.168.29.59:8000/view_food/$email";
   http.Response response = await http.get(Uri.parse(url));
-  var data = jsonDecode(response.body);
-  print(data[0]["id"]);
-  log(data.toString());
+  print(response.body);
+  try {
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      var rest = data as List;
+      print(rest);
+      list = rest.map<Food>((json) => Food.fromJson(json)).toList();
+    } else {
+      print(response.statusCode);
+    }
+  } catch (e) {
+    print(e.toString());
+  }
   headers:
   jsonEncode(<String, String>{
     "provider": email!,
   });
-  return data;
+  return list;
 }
-
