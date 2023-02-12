@@ -16,31 +16,34 @@ class _DisplayState extends State<Display> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<dynamic>>(
-        future: getData(user.email),
-        builder: (context, snapshot) {
-          try {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                  itemCount: snapshot.data?.length,
-                  itemBuilder: (context, index) {
-                    return buildFood(snapshot.data![index]);
-                  });
-            } else if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (snapshot.hasError) {
-              print(snapshot.error);
-              return Center(child: (Text("Error occured!1")));
-            } else {
-              return Center(child: (Text("Error occured2!")));
+    return Scaffold(
+      backgroundColor: Color(0xFFEDE5D8),
+      body: FutureBuilder<List<dynamic>>(
+          future: getData(user.email),
+          builder: (context, snapshot) {
+            try {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                    itemCount: snapshot.data?.length,
+                    itemBuilder: (context, index) {
+                      return buildFood(snapshot.data![index]);
+                    });
+              } else if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (snapshot.hasError) {
+                print(snapshot.error);
+                return Center(child: (Text("Error occured!1")));
+              } else {
+                return Center(child: (Text("Error occured2!")));
+              }
+            } catch (e) {
+              print(e.toString());
+              return Center(child: (Text("Error occured!3")));
             }
-          } catch (e) {
-            print(e.toString());
-            return Center(child: (Text("Error occured!3")));
-          }
-        });
+          }),
+    );
   }
 
   Widget buildFood(Food food) {
@@ -52,13 +55,15 @@ class _DisplayState extends State<Display> {
       subtitle: Text(food.quantity!),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [Text(food.name!,style: TextStyle(fontWeight: FontWeight.w700),),
+        children: [
+          Text(
+            food.name!,
+            style: TextStyle(fontWeight: FontWeight.w700),
+          ),
         ],
-
       ),
-      trailing: Text('Rs. '+ food.price!),
+      trailing: Text('Rs. ' + food.price!),
     );
-
   }
 }
 

@@ -32,30 +32,41 @@ class _ProviderDisplayState extends State<ProviderDisplay> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text("Provider Dashboard",style: TextStyle(color: Colors.black87),),
+        title: Text(
+          "Provider Dashboard",
+          style: TextStyle(color: Colors.black87),
+        ),
         backgroundColor: Colors.redAccent,
       ),
       drawer: NavigationDrawer(),
       body: widget.Verified!
           ? VerifiedProvider()
           : Column(
-            children: [
-              SizedBox(height: 50,),
-              Align(
-                  alignment: Alignment.center,
-                  child: Lottie.network('https://assets2.lottiefiles.com/private_files/lf30_t6juv2mp.json',height: 200
-                  )),
-
-              SizedBox(height: 180,),
-              Align(
-                alignment: Alignment.bottomCenter,
-
-                child: Text(
+              children: [
+                SizedBox(
+                  height: 50,
+                ),
+                Align(
+                    alignment: Alignment.center,
+                    child: Lottie.network(
+                        'https://assets2.lottiefiles.com/private_files/lf30_t6juv2mp.json',
+                        height: 200)),
+                SizedBox(
+                  height: 180,
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
                     "Your request for being approved as Provider is currently being reviewed by the Admin. "
-                    "Thank you for your patience!",style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold,fontSize: 20),),
-              ),
-            ],
-          ),
+                    "Thank you for your patience!",
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
     ));
   }
 }
@@ -93,7 +104,7 @@ class _VerifiedProviderState extends State<VerifiedProvider> {
             icon: Icon(
               Icons.attach_money,
             ),
-            label: "Finances",
+            label: "Analytics",
           ),
           BottomNavigationBarItem(
             icon: FaIcon(

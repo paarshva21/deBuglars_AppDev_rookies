@@ -25,6 +25,9 @@ class _AdminDashState extends State<AdminDash> {
       appBar: AppBar(
         title: Text("Admin Dashboard"),
         backgroundColor: Colors.redAccent,
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.search_outlined)),
+        ],
       ),
       body: screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

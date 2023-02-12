@@ -115,7 +115,7 @@ class _ProvidersPageState extends State<ProvidersPage> {
           ],
         ),
         subtitle: Text('${user?.PhoneNo}'),
-        trailing:SizedBox(
+        trailing: SizedBox(
             height: 40,
             width: 70,
             child: ElevatedButton(
@@ -131,17 +131,12 @@ class _ProvidersPageState extends State<ProvidersPage> {
               ),
               child: const Text("Verify"),
             )),
-
-
-
-
-
       );
 
   Widget buildUser1(AppUser? user, bool Verified) => ListTile(
         leading: const CircleAvatar(
           backgroundColor: Colors.lightBlueAccent,
-                    child: Icon(Icons.account_circle, color: Colors.black),
+          child: Icon(Icons.account_circle, color: Colors.black),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
