@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unscript_rookies_app/FoodDetails.dart';
 import 'package:unscript_rookies_app/UserPage.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -20,6 +21,9 @@ class _UserHomeState extends State<UserHome> {
           "Home",
           style: TextStyle(color: Colors.black87),
         ),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.search_outlined)),
+        ],
         backgroundColor: Colors.redAccent,
       ),
       drawer: NavigationDrawer(),
@@ -68,6 +72,13 @@ class _UserHomeState extends State<UserHome> {
         ],
       ),
       trailing: Text('Rs. ' + food.price!),
+        onTap: () {
+          if (food.name != null) {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => FoodDetails(
+                )));
+          }
+        }
     );
   }
 }

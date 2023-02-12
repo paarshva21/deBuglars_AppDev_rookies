@@ -26,10 +26,10 @@ class _InventoryState extends State<Inventory> {
       backgroundColor: Color(0xFFEDE5D8),
       body: Form(
         key: formKey,
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 120),
-          child: SafeArea(
-            child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 120),
+            child: SafeArea(
               child: Column(children: [
                 SizedBox(
                   width: 20.0,

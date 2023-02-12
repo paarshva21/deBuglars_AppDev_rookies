@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:unscript_rookies_app/ForgotPassword.dart';
 import 'package:unscript_rookies_app/SignUp.dart';
 import 'package:unscript_rookies_app/SignUpProvider.dart';
+import 'package:unscript_rookies_app/tplanding.dart';
 import 'Utils.dart';
 import 'UserPage.dart';
 

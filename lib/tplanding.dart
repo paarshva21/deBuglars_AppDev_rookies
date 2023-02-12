@@ -31,7 +31,7 @@ class _TpLandingState extends State<TpLanding> {
                   context, MaterialPageRoute(builder: (context) => UserPage()));
             },
             child: Text(
-              "Sign Up",
+              "Next ",
               style: TextStyle(
                 fontSize: 15.0,
                 fontWeight: FontWeight.w700,

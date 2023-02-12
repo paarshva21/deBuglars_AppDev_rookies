@@ -35,7 +35,11 @@ class _ProviderDisplayState extends State<ProviderDisplay> {
         title: Text(
           "Provider Dashboard",
           style: TextStyle(color: Colors.black87),
+
         ),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.search_outlined)),
+        ],
         backgroundColor: Colors.redAccent,
       ),
       drawer: NavigationDrawer(),

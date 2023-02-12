@@ -17,6 +17,9 @@ class _UserLocState extends State<UserLoc> {
       appBar: AppBar(
         title: Text("Location",style: TextStyle(color: Colors.black87),),
         backgroundColor: Colors.redAccent,
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.search_outlined)),
+        ],
       ),
       drawer: NavigationDrawer(),
     );
