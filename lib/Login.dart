@@ -290,7 +290,7 @@ class _LoginState extends State<Login> {
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const UserPage()));
+          context, MaterialPageRoute(builder: (context) => const tplanding()));
     } on FirebaseAuthException catch (e) {
       print(e);
 

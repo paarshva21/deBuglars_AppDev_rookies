@@ -12,7 +12,6 @@ class _UserLocState extends State<UserLoc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       backgroundColor: Color(0xFFEDE5D8),
       appBar: AppBar(
         title: Text("Location",style: TextStyle(color: Colors.black87),),
@@ -22,6 +21,13 @@ class _UserLocState extends State<UserLoc> {
         ],
       ),
       drawer: NavigationDrawer(),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 50,vertical: 70),
+        child: Image.asset("assets/mapp.jpg",
+          width: 450,
+          height: 550,
+          fit: BoxFit.contain,),
+      ),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'FoodDetails1.dart';
 
 class Display extends StatefulWidget {
   const Display({Key? key}) : super(key: key);
@@ -48,22 +48,27 @@ class _DisplayState extends State<Display> {
 
   Widget buildFood(Food food) {
     return ListTile(
-      leading: const CircleAvatar(
-        backgroundColor: Colors.white,
-        child: Icon(Icons.fastfood, color: Colors.black),
-      ),
-      subtitle: Text(food.quantity!),
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            food.name!,
-            style: TextStyle(fontWeight: FontWeight.w700),
-          ),
-        ],
-      ),
-      trailing: Text('Rs. ' + food.price!),
-    );
+        leading: const CircleAvatar(
+          backgroundColor: Colors.white,
+          child: Icon(Icons.fastfood, color: Colors.black),
+        ),
+        subtitle: Text(food.quantity!),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              food.name!,
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+          ],
+        ),
+        trailing: Text('Rs. ' + food.price!),
+        onTap: () {
+          if (food.name != null) {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => FoodDetails1()));
+          }
+        });
   }
 }
 
