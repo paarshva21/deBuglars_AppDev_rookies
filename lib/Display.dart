@@ -111,7 +111,7 @@ class Food {
 
 Future<List<Food>> getData(String? email) async {
   List<Food> list = [];
-  String url = "http://192.168.29.59:8000/view_food/$email";
+  String url = "http://192.168.29.59:8021/view_food/$email";
   http.Response response = await http.get(Uri.parse(url));
   print(response.body);
   try {

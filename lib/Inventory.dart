@@ -160,7 +160,7 @@ void addData(String? foodName, String? email, String? price, String? quantity) {
   print(quantity);
   print(email);
   http.post(
-    Uri.parse('http://192.168.29.59:8000/add_food/'),
+    Uri.parse('http://192.168.29.59:8021/add_food/'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },

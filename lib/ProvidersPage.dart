@@ -162,7 +162,7 @@ class _ProvidersPageState extends State<ProvidersPage> {
 
   void updateData(String? email) {
     http.post(
-      Uri.parse('http://192.168.29.59:8000/add_provider/'),
+      Uri.parse('http://192.168.29.59:8021/add_provider/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
